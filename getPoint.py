@@ -15,13 +15,13 @@ if __name__ == "__main__":
 
     pcd_tree = o3.geometry.KDTreeFlann(pcd)
 
-    print(np.asarray(pcd.points)[0:1,:])
-
-    # pcd.colors[1000] = [0.4,0.5]
+    np.asarray(pcd.colors)[1500:1501,:] = [0.5, 0, 0.5]
+    # pcd.colors = o3.utility.Vector3dVector(np.random.uniform(0, 1, size=(100, 3)))
 
     k = 5000
     [num, idx, _] = pcd_tree.search_knn_vector_3d(pcd.points[1500],k)
-    np.asarray(pcd.colors)[400:600, 0:4] = [0, 0, 1]
+    np.asarray(pcd.colors)[1:, :] = [0, 0, 1]
+    # np.asarray(pcd.colors)[400:600, 0:4] = [0, 0, 1]
 
     o3.visualization.draw_geometries([pcd])
 
@@ -56,9 +56,3 @@ if __name__ == "__main__":
     line_set.lines = o3.utility.Vector2iVector(lines)
     line_set.colors = o3.utility.Vector3dVector(colors)
     o3.visualization.draw_geometries([line_set])
-
-
-if __name__ == "__main2__":
-    colors = ()
-    r = o3.utility.IntVector([4,6])
-    print(r)
